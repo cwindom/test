@@ -12,3 +12,12 @@
 
 БЕЗ ВИЗУАЛКИ!!
 ...
+Your API key for maria.korogodova@mail.ru is:
+
+3LomLzdjD0yDLoWaZq80ptocSS1VBHrhFb6jE261
+You can start using this key to make web service requests. Simply pass your key in the URL when making a web request. Here's an example:
+
+https://api.nasa.gov/planetary/apod?api_key=3LomLzdjD0yDLoWaZq80ptocSS1VBHrhFb6jE261
+
+Account Email: maria.korogodova@mail.ru
+Account ID: b5ea4998-e50e-40e1-9310-b5420e48c42b
