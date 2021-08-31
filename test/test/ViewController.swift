@@ -20,10 +20,7 @@ class ViewController: UIViewController {
             guard let data = data else { return }
             print(String(data: data, encoding: .utf8)!)
         }
-
         task.resume()
     }
-
-
 }
 
