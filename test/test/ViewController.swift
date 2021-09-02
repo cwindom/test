@@ -7,24 +7,56 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+    
     @IBOutlet var tableView: UITableView!
+    var dataArray = [DemoData]()
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
-        //my code:
-        //3LomLzdjD0yDLoWaZq80ptocSS1VBHrhFb6jE261
-        let url = URL(string: "https://api.nasa.gov/planetary/apod?api_key=3LomLzdjD0yDLoWaZq80ptocSS1VBHrhFb6jE261")!
+        getData()
+        tableView.delegate = self
+        tableView.dataSource = self
+        
+    }
+    
+    func getData() {
+        let url = URL(string: "https://api.nasa.gov/planetary/apod?api_key=3LomLzdjD0yDLoWaZq80ptocSS1VBHrhFb6jE261&count=6")!
 
+//        let taskImage = URLSession.shared.downloadTask(with: url) {
+//            (tempURL, response, error) in
+//            // Handle response, the download file is
+//            // at tempURL
+//        }.resume()
+
+        
         let task = URLSession.shared.dataTask(with: url) {(data, response, error) in
+            if let error = error {
+                print(error)
+                return
+            }
             guard let data = data else { return }
             
-            let demoData: DemoData = try! JSONDecoder().decode(DemoData.self, from: data)
             
-            //print(demoData.copyright)
-            //print(String(data: data, encoding: .utf8)!)
-        }
-        task.resume()
+            for apod in try! JSONDecoder().decode([DemoData].self, from: data) {
+                self.dataArray.append(apod)
+                DispatchQueue.main.async {
+                    self.tableView.reloadData()
+                }
+            }
+        }.resume()
     }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "myCell", for: indexPath) as! TableViewCell
+        cell.data = dataArray[indexPath.row]
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return dataArray.count
+    }
+    
 }
 
