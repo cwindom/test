@@ -7,12 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F1641B9D26E236BF0061956E /* MyView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F1641B9C26E236BF0061956E /* MyView.xib */; };
 		F1B03E1F26E11449000DE27C /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1B03E1E26E11449000DE27C /* TableViewCell.swift */; };
 		F1B03E2126E11992000DE27C /* Без названия.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = F1B03E2026E11992000DE27C /* Без названия.jpeg */; };
 		F1C3F36526DEAE9F00437CBC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1C3F36426DEAE9F00437CBC /* AppDelegate.swift */; };
 		F1C3F36726DEAE9F00437CBC /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1C3F36626DEAE9F00437CBC /* SceneDelegate.swift */; };
-		F1C3F36926DEAE9F00437CBC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1C3F36826DEAE9F00437CBC /* ViewController.swift */; };
-		F1C3F36C26DEAE9F00437CBC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F1C3F36A26DEAE9F00437CBC /* Main.storyboard */; };
+		F1C3F36926DEAE9F00437CBC /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1C3F36826DEAE9F00437CBC /* HomeViewController.swift */; };
 		F1C3F36E26DEAEA200437CBC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F1C3F36D26DEAEA200437CBC /* Assets.xcassets */; };
 		F1C3F37126DEAEA200437CBC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F1C3F36F26DEAEA200437CBC /* LaunchScreen.storyboard */; };
 		F1C3F37C26DEAEA200437CBC /* testTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1C3F37B26DEAEA200437CBC /* testTests.swift */; };
@@ -38,13 +38,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		F1641B9C26E236BF0061956E /* MyView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyView.xib; sourceTree = "<group>"; };
 		F1B03E1E26E11449000DE27C /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
 		F1B03E2026E11992000DE27C /* Без названия.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "Без названия.jpeg"; path = "../../../../Downloads/Без названия.jpeg"; sourceTree = "<group>"; };
 		F1C3F36126DEAE9F00437CBC /* test.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = test.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F1C3F36426DEAE9F00437CBC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F1C3F36626DEAE9F00437CBC /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		F1C3F36826DEAE9F00437CBC /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		F1C3F36B26DEAE9F00437CBC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		F1C3F36826DEAE9F00437CBC /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		F1C3F36D26DEAEA200437CBC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F1C3F37026DEAEA200437CBC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F1C3F37226DEAEA200437CBC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -107,8 +107,8 @@
 			children = (
 				F1C3F36426DEAE9F00437CBC /* AppDelegate.swift */,
 				F1C3F36626DEAE9F00437CBC /* SceneDelegate.swift */,
-				F1C3F36826DEAE9F00437CBC /* ViewController.swift */,
-				F1C3F36A26DEAE9F00437CBC /* Main.storyboard */,
+				F1C3F36826DEAE9F00437CBC /* HomeViewController.swift */,
+				F1641B9C26E236BF0061956E /* MyView.xib */,
 				F1C3F36D26DEAEA200437CBC /* Assets.xcassets */,
 				F1C3F36F26DEAEA200437CBC /* LaunchScreen.storyboard */,
 				F1C3F37226DEAEA200437CBC /* Info.plist */,
@@ -243,7 +243,7 @@
 				F1B03E2126E11992000DE27C /* Без названия.jpeg in Resources */,
 				F1C3F37126DEAEA200437CBC /* LaunchScreen.storyboard in Resources */,
 				F1C3F36E26DEAEA200437CBC /* Assets.xcassets in Resources */,
-				F1C3F36C26DEAE9F00437CBC /* Main.storyboard in Resources */,
+				F1641B9D26E236BF0061956E /* MyView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -270,7 +270,7 @@
 			files = (
 				F1B03E1F26E11449000DE27C /* TableViewCell.swift in Sources */,
 				F1C3F39726DEC1B500437CBC /* DemoData.swift in Sources */,
-				F1C3F36926DEAE9F00437CBC /* ViewController.swift in Sources */,
+				F1C3F36926DEAE9F00437CBC /* HomeViewController.swift in Sources */,
 				F1C3F36526DEAE9F00437CBC /* AppDelegate.swift in Sources */,
 				F1C3F36726DEAE9F00437CBC /* SceneDelegate.swift in Sources */,
 			);
@@ -308,14 +308,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		F1C3F36A26DEAE9F00437CBC /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				F1C3F36B26DEAE9F00437CBC /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		F1C3F36F26DEAEA200437CBC /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (

@@ -9,6 +9,7 @@ import Foundation
 
 //https://app.quicktype.io/
 
+
 struct DemoData: Codable{
     let date, explanation: String
     let hdurl: String?
