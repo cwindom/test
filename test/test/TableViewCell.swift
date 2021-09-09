@@ -51,6 +51,7 @@ class TableViewCell: UITableViewCell {
         let image = UIImageView()
         image.translatesAutoresizingMaskIntoConstraints = false
         image.contentMode = .scaleAspectFit
+        //image.backgroundColor = .red
         return image
     }()
     
@@ -58,13 +59,14 @@ class TableViewCell: UITableViewCell {
     var explanLabel: UITextView = {
         let label = UITextView()
         label.translatesAutoresizingMaskIntoConstraints = false
+        label.isScrollEnabled = false
         return label
     }()
     
     var data: DemoData? {
         didSet {
-            nameLabel.text = data?.title
-            explanLabel.text = data?.explanation
+//            nameLabel.text = data?.title
+//            explanLabel.text = data?.explanation
             if let hdurl =  data?.hdurl, let myURL = URL(string: hdurl)
                {
                 URLSession.shared.dataTask(with: myURL) { data, response, error in
@@ -88,38 +90,45 @@ class TableViewCell: UITableViewCell {
         }
     }
     
+    func setUp(){
+        selectionStyle = .none
+        
+        contentView.addSubview(nameLabel)
+        contentView.addSubview(myImage)
+        contentView.addSubview(explanLabel)
+        
+        NSLayoutConstraint.activate([
+            nameLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
+            nameLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
+            nameLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 16),
+//            nameLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -16),
+//            nameLabel.heightAnchor.constraint(equalToConstant: 60)
+        ])
+        
+        NSLayoutConstraint.activate([
+            myImage.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
+            myImage.heightAnchor.constraint(equalToConstant: 240),
+            myImage.widthAnchor.constraint(equalToConstant: 240),
+            myImage.topAnchor.constraint(equalTo: nameLabel.bottomAnchor, constant: 16),
+//            myImage.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -16)
+//            myImage.topAnchor.constraint(equalTo: nameLabel.bottomAnchor, constant: 10),
+//            myImage.bottomAnchor.constraint(equalTo: explanLabel.topAnchor, constant: 0)
+        ])
+//
+        NSLayoutConstraint.activate([
+            explanLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
+            explanLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
+            explanLabel.topAnchor.constraint(equalTo: myImage.bottomAnchor, constant: 16),
+//            explanLabel.heightAnchor.constraint(equalToConstant: 240),
+            explanLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
+//            explanLabel.widthAnchor.constraint(equalTo: contentView.widthAnchor, multiplier: 7/8)
+        ])
+    }
+    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         
        super.init(style: style, reuseIdentifier: "TableViewCell")
-        
-        addSubview(nameLabel)
-        addSubview(myImage)
-        addSubview(explanLabel)
-        
-        NSLayoutConstraint.activate([
-            nameLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
-            nameLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: 16),
-            nameLabel.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 16),
-            nameLabel.bottomAnchor.constraint(equalTo: myImage.topAnchor, constant: 10),
-            nameLabel.heightAnchor.constraint(equalToConstant: 60)
-        ])
-        
-        NSLayoutConstraint.activate([
-            myImage.centerXAnchor.constraint(equalTo: centerXAnchor),
-            myImage.heightAnchor.constraint(equalToConstant: 240),
-            myImage.topAnchor.constraint(equalTo: nameLabel.bottomAnchor, constant: 10),
-            myImage.bottomAnchor.constraint(equalTo: explanLabel.topAnchor, constant: 0)
-        ])
-        
-        NSLayoutConstraint.activate([
-            explanLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
-            //explanLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: 16),
-            explanLabel.topAnchor.constraint(equalTo: myImage.bottomAnchor, constant: 0),
-            explanLabel.bottomAnchor.constraint(equalTo: bottomAnchor),
-            explanLabel.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 7/8)
-        ])
-        
-        selectionStyle = .none
+        setUp()
     }
     
     required init?(coder: NSCoder) {

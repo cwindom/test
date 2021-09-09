@@ -30,36 +30,35 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     //@IBOutlet var tableView: UITableView!
     
-    let tableView = UITableView.init(frame: .zero)
+    lazy var tableView: UITableView = {
+        let table = UITableView()
+        table.translatesAutoresizingMaskIntoConstraints = false
+        table.register(TableViewCell.self, forCellReuseIdentifier: "TableViewCell")
+        table.delegate = self
+        table.dataSource = self
+        return table
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        tableView.delegate = self
-        tableView.dataSource = self
+
         getData()
         
-        view.backgroundColor = .systemBlue
         title = "Galaxy"
         
-        self.navigationController?.navigationBar.prefersLargeTitles = true
-        self.view.addSubview(self.tableView)
-        self.tableView.register(TableViewCell.self, forCellReuseIdentifier: "TableViewCell")
-        self.tableView.dataSource = self
-        self.updateLayout(with: self.view.frame.size)
+        navigationController?.navigationBar.prefersLargeTitles = true
+        view.addSubview(self.tableView)
+        
+        NSLayoutConstraint.activate([
+            tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            tableView.topAnchor.constraint(equalTo: view.topAnchor),
+            tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+        ])
 
     }
     
-    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
-       super.viewWillTransition(to: size, with: coordinator)
-       coordinator.animate(alongsideTransition: { (contex) in
-          self.updateLayout(with: size)
-       }, completion: nil)
-    }
 
-    
-    private func updateLayout(with size: CGSize) {
-       self.tableView.frame = CGRect.init(origin: .zero, size: size)
-    }
     
     func getData() {
         let url = URL(string: "https://api.nasa.gov/planetary/apod?api_key=3LomLzdjD0yDLoWaZq80ptocSS1VBHrhFb6jE261&count=6")!
@@ -91,6 +90,9 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         
     
         cell.data = data
+        cell.nameLabel.text = data.title
+        cell.explanLabel.text = data.explanation
+        
         return cell
     }
     
@@ -106,8 +108,10 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 640
+        return UITableView.automaticDimension
     }
-    
+    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 300
+    }
 }
 
