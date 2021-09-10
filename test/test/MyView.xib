@@ -67,11 +67,6 @@ Message from debugger: Terminated due to signal 9</string>
                 <constraint firstItem="obX-bU-AKj" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="133" id="tm1-IZ-OIy"/>
                 <constraint firstItem="obX-bU-AKj" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="16" id="vbG-4s-Qj7"/>
             </constraints>
-            <variation key="default">
-                <mask key="subviews">
-                    <exclude reference="obX-bU-AKj"/>
-                </mask>
-            </variation>
             <point key="canvasLocation" x="137.68115942028987" y="69.642857142857139"/>
         </view>
     </objects>

@@ -21,3 +21,35 @@ https://api.nasa.gov/planetary/apod?api_key=3LomLzdjD0yDLoWaZq80ptocSS1VBHrhFb6j
 
 Account Email: maria.korogodova@mail.ru
 Account ID: b5ea4998-e50e-40e1-9310-b5420e48c42b
+
+
+//@IBDesignable
+//class MyImage: UIImageView{
+//    @IBInspectable
+//    var radius: CGFloat{
+//        get{
+//            layer.cornerRadius
+//        }
+//        set{
+//            layer.cornerRadius = newValue
+//        }
+//    }
+//
+////    func myFunc() {
+////        layoutMargins
+////        layoutMarginsGuide
+////        safeAreaInsets
+////        safeAreaLayoutGuide
+////
+////        preservesSuperviewLayoutMargins
+////        insetsLayoutMarginsFromSafeArea
+////
+////        traitCollectionDidChange(<#T##previousTraitCollection: UITraitCollection?##UITraitCollection?#>)
+////    }
+//
+//    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+//        if traitCollection.verticalSizeClass == .compact{
+//            backgroundColor = .blue
+//        }
+//    }
+//}

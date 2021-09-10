@@ -62,7 +62,6 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     func getData() {
         let url = URL(string: "https://api.nasa.gov/planetary/apod?api_key=3LomLzdjD0yDLoWaZq80ptocSS1VBHrhFb6jE261&count=6")!
-
         
         let task = URLSession.shared.dataTask(with: url) {(data, response, error) in
             if let error = error {
@@ -78,16 +77,13 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
                 self.tableView.reloadData()
             }
         }.resume()
-
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        //??
         let cell = tableView.dequeueReusableCell(withIdentifier: "TableViewCell", for: indexPath) as! TableViewCell
         
         let data = dataArray[indexPath.row]
-        
-        //debugPrint(indexPath.row, data.hdurl)
-        
     
         cell.data = data
         cell.nameLabel.text = data.title
@@ -97,19 +93,18 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        //Мы говорим таблице что в 0-ой секции будет ячеек столько, сколько элементов в структуре data.
         switch tableView {
            case self.tableView:
               return self.dataArray.count
             default:
               return 0
            }
-        //return dataArray.count
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return UITableView.automaticDimension
     }
+    
     func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
         return 300
     }
