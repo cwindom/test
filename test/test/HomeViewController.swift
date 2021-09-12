@@ -8,27 +8,8 @@
 import UIKit
 
 class HomeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
-    
     var dataArray = [DemoData]()
-    
-//    weak var testView: UIView!
-//
-//    override func loadView() {
-//        super.loadView()
-//
-//        let testView = UIView(frame: .zero)
-//        testView.translatesAutoresizingMaskIntoConstraints = false
-//        self.view.addSubview(testView)
-//        NSLayoutConstraint.activate([
-//            testView.widthAnchor.constraint(equalToConstant: 64),
-//            testView.widthAnchor.constraint(equalTo: testView.heightAnchor),
-//            testView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
-//            testView.centerYAnchor.constraint(equalTo: self.view.centerYAnchor),
-//        ])
-//        self.testView = testView
-//    }
-    
-    //@IBOutlet var tableView: UITableView!
+    var request = RequestService()
     
     lazy var tableView: UITableView = {
         let table = UITableView()
@@ -41,10 +22,11 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        getData()
-        
-        title = "Galaxy"
+        request.getData() {
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
+        }
         
         navigationController?.navigationBar.prefersLargeTitles = true
         view.addSubview(self.tableView)
@@ -55,36 +37,13 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
             tableView.topAnchor.constraint(equalTo: view.topAnchor),
             tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         ])
-
-    }
-    
-
-    
-    func getData() {
-        let url = URL(string: "https://api.nasa.gov/planetary/apod?api_key=3LomLzdjD0yDLoWaZq80ptocSS1VBHrhFb6jE261&count=6")!
-        
-        let task = URLSession.shared.dataTask(with: url) {(data, response, error) in
-            if let error = error {
-                print(error)
-                return
-            }
-            guard let data = data else { return }
-        
-            for i in try! JSONDecoder().decode([DemoData].self, from: data) {
-                self.dataArray.append(i)
-            }
-            DispatchQueue.main.async {
-                self.tableView.reloadData()
-            }
-        }.resume()
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        //??
         let cell = tableView.dequeueReusableCell(withIdentifier: "TableViewCell", for: indexPath) as! TableViewCell
         
-        let data = dataArray[indexPath.row]
-    
+        let data = request.dataArray[indexPath.row]
+
         cell.data = data
         cell.nameLabel.text = data.title
         cell.explanLabel.text = data.explanation
@@ -95,7 +54,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch tableView {
            case self.tableView:
-              return self.dataArray.count
+              return request.dataArray.count
             default:
               return 0
            }

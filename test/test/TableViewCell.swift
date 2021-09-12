@@ -27,11 +27,13 @@ class TableViewCell: UITableViewCell {
         let label = UITextView()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.isScrollEnabled = false
+        
         return label
     }()
     
     lazy var stackView: UIStackView = {
         var stackView = UIStackView(arrangedSubviews: [nameLabel, myImage, explanLabel])
+        
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.axis = .vertical
         stackView.spacing = 2
@@ -40,7 +42,6 @@ class TableViewCell: UITableViewCell {
         nameLabel.clipsToBounds = true
         myImage.clipsToBounds = true
         
-        //stackView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
         return stackView
     }()
     
