@@ -7,9 +7,16 @@
 
 import Foundation
 
-class RequestService{
+protocol GetDataProtocol{
+    //var dataArray = [DemoData]() { get }
+    func getPostsData(completion: @escaping () -> Void) -> ()
+    
+}
+
+class PostsService: GetDataProtocol{
     var dataArray = [DemoData]()
-    func getData(completion: @escaping (() -> ())) {
+    
+    func getPostsData(completion: @escaping () -> Void) -> () {
         let url = URL(string: "https://api.nasa.gov/planetary/apod?api_key=3LomLzdjD0yDLoWaZq80ptocSS1VBHrhFb6jE261&count=6")!
         
         let task = URLSession.shared.dataTask(with: url) {(data, response, error) in
@@ -24,5 +31,15 @@ class RequestService{
             }
             completion()
         }.resume()
+        
     }
+    
+    
+    func sumOfLengthString(completion: @escaping(String, String) -> Int){
+        
+        //string1.count + string2.count
+    }
+    
+    
+    
 }

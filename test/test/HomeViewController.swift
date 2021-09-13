@@ -9,7 +9,7 @@ import UIKit
 
 class HomeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     var dataArray = [DemoData]()
-    var request = RequestService()
+    var request = PostsService()
     
     lazy var tableView: UITableView = {
         let table = UITableView()
@@ -22,13 +22,11 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        request.getData() {
+        request.getPostsData() {
             DispatchQueue.main.async {
                 self.tableView.reloadData()
             }
         }
-        
-//        tableView.separatorStyle = .singleLine
         
         navigationController?.navigationBar.prefersLargeTitles = true
         view.addSubview(self.tableView)
