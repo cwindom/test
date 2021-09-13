@@ -28,6 +28,8 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
             }
         }
         
+//        tableView.separatorStyle = .singleLine
+        
         navigationController?.navigationBar.prefersLargeTitles = true
         view.addSubview(self.tableView)
         
@@ -47,7 +49,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         cell.data = data
         cell.nameLabel.text = data.title
         cell.explanLabel.text = data.explanation
-        
+
         return cell
     }
     

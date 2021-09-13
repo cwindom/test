@@ -13,13 +13,17 @@ class TableViewCell: UITableViewCell {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textAlignment = .center
+        label.minimumScaleFactor = 1.0
         return label
     }()
     
     var myImage: UIImageView = {
         let image = UIImageView()
         image.translatesAutoresizingMaskIntoConstraints = false
-//        image.contentMode = .scaleAspectFit
+        image.contentMode = .scaleAspectFill
+        image.heightAnchor.constraint(equalToConstant: 150).isActive = true
+//        image.clipsToBounds = true
+//        image.bounds.size = CGSize(width: 240, height: 240)
         return image
     }()
     
@@ -38,7 +42,7 @@ class TableViewCell: UITableViewCell {
         stackView.axis = .vertical
         stackView.spacing = 2
         stackView.alignment = .fill
-        stackView.distribution = .fillEqually
+        stackView.distribution = .fill
         nameLabel.clipsToBounds = true
         myImage.clipsToBounds = true
         
@@ -79,6 +83,11 @@ class TableViewCell: UITableViewCell {
             stackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
             stackView.topAnchor.constraint(equalTo: contentView.topAnchor),
             stackView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
+        ])
+        NSLayoutConstraint.activate([
+            myImage.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
+            myImage.trailingAnchor.constraint(equalTo: contentView.trailingAnchor)
+//            myImage.widthAnchor.constraint()
         ])
     }
     
