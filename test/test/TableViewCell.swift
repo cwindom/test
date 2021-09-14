@@ -10,6 +10,8 @@ import UIKit
 /// ячейка с постом
 class TableViewCell: UITableViewCell {
     
+    var loadImage = LoadImageService()
+    
     /// название поста
     var nameLabel: UILabel = {
         let label = UILabel()
@@ -56,23 +58,13 @@ class TableViewCell: UITableViewCell {
         return stackView
     }()
     
-    /// <#Description#>
     var data: DemoData? {
         didSet {
-            if let hdurl =  data?.hdurl, let myURL = URL(string: hdurl)
-               {
-                URLSession.shared.dataTask(with: myURL) { data, response, error in
-                           guard
-                               let httpURLResponse = response as? HTTPURLResponse, httpURLResponse.statusCode == 200,
-                               let mimeType = response?.mimeType, mimeType.hasPrefix("image"),
-                               let data = data, error == nil,
-                               let image = UIImage(data: data)
-                               else { return }
-                           DispatchQueue.main.async() { [weak self] in
-                            self?.image = image
-                           }
-                       }.resume()
-                   }
+            loadImage.loadImage(data: data) { image in
+                DispatchQueue.main.async() { [weak self] in
+                    self?.image = image
+                }
+            }
             }
         }
     

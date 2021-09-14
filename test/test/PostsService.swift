@@ -9,7 +9,6 @@ import Foundation
 
 /// сервис для скачивания постов
 
-
 class PostsService: PostServiceProtocol{
     /// массив структур для сохранения данных
     var dataArray = [DemoData]()
