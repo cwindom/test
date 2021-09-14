@@ -7,15 +7,13 @@
 
 import Foundation
 
-protocol GetDataProtocol{
-    //var dataArray = [DemoData]() { get }
-    func getPostsData(completion: @escaping () -> Void) -> ()
-    
-}
+/// сервис для скачивания постов
 
-class PostsService: GetDataProtocol{
+
+class PostsService: PostServiceProtocol{
+    /// массив структур для сохранения данных
     var dataArray = [DemoData]()
-    
+    /// метод делает запрос и сохраняет данные в стуктуру
     func getPostsData(completion: @escaping () -> Void) -> () {
         let url = URL(string: "https://api.nasa.gov/planetary/apod?api_key=3LomLzdjD0yDLoWaZq80ptocSS1VBHrhFb6jE261&count=6")!
         
@@ -31,15 +29,5 @@ class PostsService: GetDataProtocol{
             }
             completion()
         }.resume()
-        
     }
-    
-    
-    func sumOfLengthString(completion: @escaping(String, String) -> Int){
-        
-        //string1.count + string2.count
-    }
-    
-    
-    
 }

@@ -7,8 +7,10 @@
 
 import UIKit
 
+/// ячейка с постом
 class TableViewCell: UITableViewCell {
     
+    /// название поста
     var nameLabel: UILabel = {
         let label = UILabel()
         
@@ -19,6 +21,7 @@ class TableViewCell: UITableViewCell {
         return label
     }()
     
+    /// изображение поста
     var myImage: UIImageView = {
         let image = UIImageView()
         
@@ -29,6 +32,7 @@ class TableViewCell: UITableViewCell {
         return image
     }()
     
+    /// описание поста
     var explanLabel: UITextView = {
         let label = UITextView()
         
@@ -52,6 +56,7 @@ class TableViewCell: UITableViewCell {
         return stackView
     }()
     
+    /// <#Description#>
     var data: DemoData? {
         didSet {
             if let hdurl =  data?.hdurl, let myURL = URL(string: hdurl)
@@ -77,6 +82,7 @@ class TableViewCell: UITableViewCell {
         }
     }
     
+    /// установка и настройка констрейнтов
     func setUp(){
         selectionStyle = .none
         contentView.addSubview(stackView)

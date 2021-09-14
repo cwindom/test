@@ -10,10 +10,15 @@ import Foundation
 //https://app.quicktype.io/
 
 
+/// структура для хранения данных из поста
 struct DemoData: Codable{
+    /// дата поста, его описание
     let date, explanation: String
+    /// hdurl
     let hdurl: String?
+    /// тип данных, версия сервиса, заголовок поста
     let mediaType, serviceVersion, title: String
+    /// url
     let url: String
 
     enum CodingKeys: String, CodingKey {

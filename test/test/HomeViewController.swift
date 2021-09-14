@@ -7,8 +7,9 @@
 
 import UIKit
 
+
 class HomeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
-    var dataArray = [DemoData]()
+    
     var request = PostsService()
     
     lazy var tableView: UITableView = {
