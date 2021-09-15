@@ -10,7 +10,7 @@ import UIKit
 
 class HomeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
-    var request = PostsService()
+    let requestService = PostsService()
     
     lazy var tableView: UITableView = {
         let table = UITableView()
@@ -23,11 +23,12 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        request.getPostsData() {
-            DispatchQueue.main.async {
-                self.tableView.reloadData()
-            }
-        }
+        
+//        request.getPostsData() {_ in
+//            DispatchQueue.main.async {
+//                self.tableView.reloadData()
+//            }
+ //       }
         
         navigationController?.navigationBar.prefersLargeTitles = true
         view.addSubview(self.tableView)
@@ -38,12 +39,24 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
             tableView.topAnchor.constraint(equalTo: view.topAnchor),
             tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         ])
+        
+//        requestService.getPostsData { posts in
+//            print(posts)
+//        }
+        requestService.getPostsData { result in
+            switch result{
+            case .success(let posts):
+                print(posts)
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "TableViewCell", for: indexPath) as! TableViewCell
         
-        let data = request.dataArray[indexPath.row]
+        let data = requestService.dataArray[indexPath.row]
 
         cell.data = data
         cell.nameLabel.text = data.title
@@ -55,7 +68,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch tableView {
            case self.tableView:
-              return request.dataArray.count
+              return requestService.dataArray.count
             default:
               return 0
            }

@@ -7,7 +7,11 @@
 
 import Foundation
 
-protocol PostServiceProtocol{
-    /// метод делает запрос и сохраняет данные в стуктуру
-    func getPostsData(completion: @escaping () -> Void) -> ()
+/// Это сервис для работы с постами.
+protocol PostServiceProtocol {
+    
+    /// Получить массив постов.
+    /// - Parameter completion: Замыкание с массивом постов.
+    func getPostsData(completion: @escaping (Result<[DemoData], Error>) -> Void)
 }
+

@@ -7,26 +7,61 @@
 
 import Foundation
 
-/// сервис для скачивания постов
-
-class PostsService: PostServiceProtocol{
-    /// массив структур для сохранения данных
+final class PostsService {
     var dataArray = [DemoData]()
-    /// метод делает запрос и сохраняет данные в стуктуру
-    func getPostsData(completion: @escaping () -> Void) -> () {
-        let url = URL(string: "https://api.nasa.gov/planetary/apod?api_key=3LomLzdjD0yDLoWaZq80ptocSS1VBHrhFb6jE261&count=6")!
+}
+
+extension PostsService: PostServiceProtocol {
+    
+    enum EndPoint {
         
-        let task = URLSession.shared.dataTask(with: url) {(data, response, error) in
+        case getPostsData
+        case getSomething
+        
+        var url: URL? {
+            switch self {
+            case .getPostsData:
+                return URL(string: "https://api.nasa.gov/planetary/apod?api_key=3LomLzdjD0yDLoWaZq80ptocSS1VBHrhFb6jE261&count=6")
+            case .getSomething:
+                return URL(string: "random")
+            }
+        }
+    }
+    
+    enum PostServiceError: Error {
+        
+        case urlError
+        
+        var description: String {
+            switch self {
+            case .urlError:
+                return "Invalid url."
+            }
+        }
+    }
+    
+    func getPostsData(completion: @escaping (Result<[DemoData], Error>) -> Void) {
+        
+        guard let url = EndPoint.getPostsData.url else {
+            completion(.failure(PostServiceError.urlError))
+            return
+        }
+        
+        URLSession.shared.dataTask(with: url) {(data, response, error) in
             if let error = error {
-                print(error)
+                completion(.failure(error))
                 return
             }
-            guard let data = data else { return }
-        
-            for i in try! JSONDecoder().decode([DemoData].self, from: data) {
-                self.dataArray.append(i)
+            guard let data = data else {
+                return
             }
-            completion()
+        
+            do {
+                let dataArray = try JSONDecoder().decode([DemoData].self, from: data)
+                completion(.success(dataArray))
+            } catch let error {
+                completion(.failure(error))
+            }
         }.resume()
     }
 }

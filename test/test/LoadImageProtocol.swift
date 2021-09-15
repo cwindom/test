@@ -9,5 +9,6 @@ import Foundation
 import UIKit
 
 protocol LoadImageProtocol{
+    /// загружает изображение в ячейку
     func loadImage(data: DemoData?, completion: @escaping (UIImage) -> Void) -> ()
 }

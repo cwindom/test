@@ -8,7 +8,9 @@
 import Foundation
 import UIKit
 
+/// сервис для загрузки изображения
 class LoadImageService: LoadImageProtocol{
+    /// загружает изображение в ячейку
     func loadImage(data: DemoData?, completion: @escaping (UIImage) -> Void) {
         if let hdurl =  data?.hdurl, let myURL = URL(string: hdurl)
         {
