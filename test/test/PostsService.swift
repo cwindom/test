@@ -8,7 +8,7 @@
 import Foundation
 
 final class PostsService {
-    var dataArray = [DemoData]()
+    var postsArray = [DemoData]()
 }
 
 extension PostsService: PostServiceProtocol {
@@ -58,10 +58,13 @@ extension PostsService: PostServiceProtocol {
         
             do {
                 let dataArray = try JSONDecoder().decode([DemoData].self, from: data)
+//                self.postsArray = dataArray
+//                print(self.postsArray)
                 completion(.success(dataArray))
             } catch let error {
                 completion(.failure(error))
             }
         }.resume()
+//        print(self.postsArray)
     }
 }

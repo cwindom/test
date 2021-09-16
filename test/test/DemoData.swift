@@ -9,19 +9,21 @@ import Foundation
 
 //https://app.quicktype.io/
 
-
-//по одной переменной в строке и комментарии к неочевидным переменным
-/// структура для хранения данных из поста
+/// Эта структура хранит данные из поста.
 struct DemoData: Codable{
     
-    /// дата поста, его описание
-    let date, explanation: String
+    let date: String
     
-    /// <#Description#>
+    /// Описание поста.
+    let explanation: String
+    
+    /// URL для изобрвжения.
     let hdurl: String?
+    let mediaType: String
+    let serviceVersion: String
     
-    let mediaType, serviceVersion, title: String
-    
+    /// Заголовок поста.
+    let title: String
     let url: String
 
     enum CodingKeys: String, CodingKey {

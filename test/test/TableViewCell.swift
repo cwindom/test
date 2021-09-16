@@ -7,12 +7,12 @@
 
 import UIKit
 
-/// ячейка с постом
+/// Этот класс хранит ячейку с данными из поста.
 class TableViewCell: UITableViewCell {
     
-    var loadImage = LoadImageService()
+    var imageService = LoadImageService()
     
-    /// название поста
+    /// Название поста.
     var nameLabel: UILabel = {
         let label = UILabel()
         
@@ -23,7 +23,7 @@ class TableViewCell: UITableViewCell {
         return label
     }()
     
-    /// изображение поста
+    /// Изображение из поста.
     var myImage: UIImageView = {
         let image = UIImageView()
         
@@ -34,7 +34,7 @@ class TableViewCell: UITableViewCell {
         return image
     }()
     
-    /// описание поста
+    /// Описание поста.
     var explanLabel: UITextView = {
         let label = UITextView()
         
@@ -60,9 +60,18 @@ class TableViewCell: UITableViewCell {
     
     var data: DemoData? {
         didSet {
-            loadImage.loadImage(data: data) { image in
-                DispatchQueue.main.async() { [weak self] in
-                    self?.image = image
+            imageService.loadImage(data: data) { result in
+                switch result{
+                case .success(let image):
+                    DispatchQueue.main.async() { [weak self] in
+                        self?.image = image
+                    }
+                    print("success")
+                case .failure(let error):
+                    print(error.localizedDescription)
+                
+//                    self?.nameLabel.text = self?.data?.title
+//                    self?.explanLabel.text = self?.data?.explanation
                 }
             }
             }
@@ -74,7 +83,7 @@ class TableViewCell: UITableViewCell {
         }
     }
     
-    /// установка и настройка констрейнтов
+    /// Функция устанавливает и настраивает констрейнты.
     func setUp(){
         selectionStyle = .none
         contentView.addSubview(stackView)

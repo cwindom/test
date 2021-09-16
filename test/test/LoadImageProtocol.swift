@@ -8,7 +8,12 @@
 import Foundation
 import UIKit
 
+/// Это сервис для работы с изображениями из постов.
 protocol LoadImageProtocol{
-    /// загружает изображение в ячейку
-    func loadImage(data: DemoData?, completion: @escaping (UIImage) -> Void) -> ()
+    
+    /// Загрузить изображение.
+    /// - Parameters:
+    ///   - data: Структура, в которой хранятся посты.
+    ///   - completion: Замыкание.
+    func loadImage(data: DemoData?, completion: @escaping (Result<UIImage, Error>) -> Void)
 }
