@@ -36,9 +36,11 @@ protocol ImagesServiceProtocol {
 }
 
 extension ImagesServiceProtocol {
+    
     func loadImage(data: DemoData, completion: @escaping (Result<UIImage, Error>) -> Void) {
         guard let url =  data.imageUrl else {
-            completion(.failure(LoadImageServiceEror.invalidURL))
+
+            completion(.failure(ImageServiceEror.invalidURL))
             return
         }
         loadImage(url: url, completion: completion)
@@ -46,6 +48,7 @@ extension ImagesServiceProtocol {
 }
 
 protocol UserImageServiceProtocol: ImagesServiceProtocol {
+    
     func loadIcon()
 }
 

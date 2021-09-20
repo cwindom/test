@@ -12,6 +12,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     let requestService = PostsService()
     
     lazy var tableView: UITableView = {
+        
         let table = UITableView()
         table.translatesAutoresizingMaskIntoConstraints = false
         table.register(TableViewCell.self, forCellReuseIdentifier: "TableViewCell")
@@ -21,6 +22,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     }()
     
     override func viewDidLoad() {
+        
         super.viewDidLoad()
         
         navigationController?.navigationBar.prefersLargeTitles = true
@@ -36,7 +38,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         requestService.getPostsData { [weak self] result in
             switch result{
             case .success(let posts):
-                self?.requestService.postsArray = posts
+                self?.requestService.posts = posts
                 
                 DispatchQueue.main.async {
                     self?.tableView.reloadData()
@@ -49,11 +51,11 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
         let cell = tableView.dequeueReusableCell(withIdentifier: "TableViewCell", for: indexPath) as! TableViewCell
-        
-        print(requestService.postsArray)
-        let data = requestService.postsArray[indexPath.row]
-        
+
+        let data = requestService.posts[indexPath.row]
+    
         cell.data = data
         cell.nameLabel.text = data.title
         cell.explanLabel.text = data.explanation
@@ -62,19 +64,22 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
         switch tableView {
            case self.tableView:
-              return requestService.postsArray.count
+              return requestService.posts.count
             default:
               return 0
            }
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        
         return UITableView.automaticDimension
     }
     
     func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+        
         return 300
     }
 }

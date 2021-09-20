@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		F162515A26EE2C6800D2C800 /* PostsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F162515926EE2C6800D2C800 /* PostsService.swift */; };
 		F162515E26F0E81100D2C800 /* PostServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = F162515D26F0E81100D2C800 /* PostServiceProtocol.swift */; };
-		F162516026F1000200D2C800 /* LoadImageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F162515F26F1000200D2C800 /* LoadImageService.swift */; };
+		F162516026F1000200D2C800 /* ImageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F162515F26F1000200D2C800 /* ImageService.swift */; };
 		F162516226F1058700D2C800 /* ImagesServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = F162516126F1058700D2C800 /* ImagesServiceProtocol.swift */; };
 		F1641B9D26E236BF0061956E /* MyView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F1641B9C26E236BF0061956E /* MyView.xib */; };
 		F1B03E1F26E11449000DE27C /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1B03E1E26E11449000DE27C /* TableViewCell.swift */; };
@@ -43,7 +43,7 @@
 /* Begin PBXFileReference section */
 		F162515926EE2C6800D2C800 /* PostsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsService.swift; sourceTree = "<group>"; };
 		F162515D26F0E81100D2C800 /* PostServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostServiceProtocol.swift; sourceTree = "<group>"; };
-		F162515F26F1000200D2C800 /* LoadImageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadImageService.swift; sourceTree = "<group>"; };
+		F162515F26F1000200D2C800 /* ImageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageService.swift; sourceTree = "<group>"; };
 		F162516126F1058700D2C800 /* ImagesServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagesServiceProtocol.swift; sourceTree = "<group>"; };
 		F1641B9C26E236BF0061956E /* MyView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyView.xib; sourceTree = "<group>"; };
 		F1B03E1E26E11449000DE27C /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
@@ -88,6 +88,41 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		F19C78A726F8BB4900692E7E /* ImageService */ = {
+			isa = PBXGroup;
+			children = (
+				F162515F26F1000200D2C800 /* ImageService.swift */,
+				F162516126F1058700D2C800 /* ImagesServiceProtocol.swift */,
+			);
+			path = ImageService;
+			sourceTree = "<group>";
+		};
+		F19C78A826F8BBB000692E7E /* PostsService */ = {
+			isa = PBXGroup;
+			children = (
+				F162515926EE2C6800D2C800 /* PostsService.swift */,
+				F162515D26F0E81100D2C800 /* PostServiceProtocol.swift */,
+			);
+			path = PostsService;
+			sourceTree = "<group>";
+		};
+		F19C78A926F8BBCD00692E7E /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				F1C3F39626DEC1B500437CBC /* DemoData.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		F19C78AA26F8BBDE00692E7E /* View */ = {
+			isa = PBXGroup;
+			children = (
+				F1C3F36826DEAE9F00437CBC /* HomeViewController.swift */,
+				F1B03E1E26E11449000DE27C /* TableViewCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		F1C3F35826DEAE9F00437CBC = {
 			isa = PBXGroup;
 			children = (
@@ -111,19 +146,16 @@
 		F1C3F36326DEAE9F00437CBC /* test */ = {
 			isa = PBXGroup;
 			children = (
+				F19C78AA26F8BBDE00692E7E /* View */,
+				F19C78A926F8BBCD00692E7E /* Models */,
+				F19C78A826F8BBB000692E7E /* PostsService */,
+				F19C78A726F8BB4900692E7E /* ImageService */,
 				F1C3F36426DEAE9F00437CBC /* AppDelegate.swift */,
 				F1C3F36626DEAE9F00437CBC /* SceneDelegate.swift */,
-				F1C3F36826DEAE9F00437CBC /* HomeViewController.swift */,
-				F162515F26F1000200D2C800 /* LoadImageService.swift */,
-				F162516126F1058700D2C800 /* ImagesServiceProtocol.swift */,
 				F1641B9C26E236BF0061956E /* MyView.xib */,
 				F1C3F36D26DEAEA200437CBC /* Assets.xcassets */,
 				F1C3F36F26DEAEA200437CBC /* LaunchScreen.storyboard */,
 				F1C3F37226DEAEA200437CBC /* Info.plist */,
-				F1C3F39626DEC1B500437CBC /* DemoData.swift */,
-				F1B03E1E26E11449000DE27C /* TableViewCell.swift */,
-				F162515926EE2C6800D2C800 /* PostsService.swift */,
-				F162515D26F0E81100D2C800 /* PostServiceProtocol.swift */,
 			);
 			path = test;
 			sourceTree = "<group>";
@@ -281,7 +313,7 @@
 				F1C3F39726DEC1B500437CBC /* DemoData.swift in Sources */,
 				F1C3F36926DEAE9F00437CBC /* HomeViewController.swift in Sources */,
 				F162515E26F0E81100D2C800 /* PostServiceProtocol.swift in Sources */,
-				F162516026F1000200D2C800 /* LoadImageService.swift in Sources */,
+				F162516026F1000200D2C800 /* ImageService.swift in Sources */,
 				F162516226F1058700D2C800 /* ImagesServiceProtocol.swift in Sources */,
 				F1C3F36526DEAE9F00437CBC /* AppDelegate.swift in Sources */,
 				F1C3F36726DEAE9F00437CBC /* SceneDelegate.swift in Sources */,

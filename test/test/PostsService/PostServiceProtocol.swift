@@ -12,6 +12,6 @@ protocol PostServiceProtocol {
     
     /// Получить массив постов.
     /// - Parameter completion: Замыкание с массивом постов.
-    func getPostsData(completion: @escaping (Result<[DemoData], Error>) -> Void)
+    func getPostsData(completion: @escaping (Result<[DemoDataEntity], Error>) -> Void)
 }
 

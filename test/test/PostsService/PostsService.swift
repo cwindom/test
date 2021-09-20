@@ -8,7 +8,15 @@
 import Foundation
 
 final class PostsService {
+    
+    /// Этот массив нужен для хранения всех данных.
+    /// Виден и существует только в этом сервисе.
     var postsArray = [DemoData]()
+    
+    
+    /// Этот массив хранит только нужные для view данные.
+    /// Дополнительный слой - entity.
+    var posts = [DemoDataEntity]()
 }
 
 extension PostsService: PostServiceProtocol {
@@ -40,7 +48,7 @@ extension PostsService: PostServiceProtocol {
         }
     }
     
-    func getPostsData(completion: @escaping (Result<[DemoData], Error>) -> Void) {
+    func getPostsData(completion: @escaping (Result<[DemoDataEntity], Error>) -> Void) {
         
         guard let url = EndPoint.getPostsData.url else {
             completion(.failure(PostServiceError.urlError))
@@ -58,13 +66,11 @@ extension PostsService: PostServiceProtocol {
         
             do {
                 let dataArray = try JSONDecoder().decode([DemoData].self, from: data)
-//                self.postsArray = dataArray
-//                print(self.postsArray)
-                completion(.success(dataArray))
+                self.posts = dataArray.map { post in DemoDataEntity(data: post) }
+                completion(.success(self.posts))
             } catch let error {
                 completion(.failure(error))
             }
         }.resume()
-//        print(self.postsArray)
     }
 }

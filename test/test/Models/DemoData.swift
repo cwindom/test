@@ -17,14 +17,14 @@ struct DemoData: Codable {
     /// Описание поста.
     var explanation: String
     
-    /// URL для изобрвжения.
+    /// URL для изображения.
     let hdurl: String?
     let mediaType: String
     let serviceVersion: String
     
     /// Заголовок поста.
     let title: String
-//    let newTitle: String?
+
     let url: String
 
     enum CodingKeys: String, CodingKey {
@@ -36,6 +36,7 @@ struct DemoData: Codable {
 }
 
 extension DemoData {
+    
     var imageUrl: URL? {
         guard let hdurl = hdurl else {
             return nil
@@ -43,3 +44,29 @@ extension DemoData {
         return URL(string: hdurl)
     }
 }
+
+struct DemoDataEntity {
+    
+    let date: String
+    let title: String
+    let explanation: String
+    let imageUrl: URL?
+    
+    init(data: DemoData) {
+        self.date = data.date
+        self.title = data.title
+        self.explanation = data.explanation
+        self.imageUrl = data.imageUrl
+    }
+}
+
+protocol DemoDataProtocol {
+    
+    var title: String { get }
+    var explanation: String { get set }
+}
+
+extension DemoData: DemoDataProtocol {
+
+}
+

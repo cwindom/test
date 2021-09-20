@@ -10,10 +10,11 @@ import UIKit
 /// Этот класс хранит ячейку с данными из поста.
 class TableViewCell: UITableViewCell {
     
-    var imageService = LoadImageService()
+    var imageService = ImageService()
     
     /// Название поста.
     var nameLabel: UILabel = {
+        
         let label = UILabel()
         
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -25,6 +26,7 @@ class TableViewCell: UITableViewCell {
     
     /// Изображение из поста.
     var myImage: UIImageView = {
+        
         let image = UIImageView()
         
         image.translatesAutoresizingMaskIntoConstraints = false
@@ -36,6 +38,7 @@ class TableViewCell: UITableViewCell {
     
     /// Описание поста.
     var explanLabel: UITextView = {
+        
         let label = UITextView()
         
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -58,13 +61,14 @@ class TableViewCell: UITableViewCell {
         return stackView
     }()
     
-    var data: DemoData? {
+    var data: DemoDataEntity? {
+        
         didSet {
-            guard let data = data else {
+            guard let data = data, let url = data.imageUrl else {
                 self.image = nil
                 return
             }
-            imageService.loadImage(data: data) { result in
+            imageService.loadImage(url: url) { result in
                 switch result{
                 case .success(let image):
                     DispatchQueue.main.async() { [weak self] in
@@ -79,6 +83,7 @@ class TableViewCell: UITableViewCell {
     }
     
     var image: UIImage? {
+        
         didSet {
             myImage.image = image
         }
@@ -86,6 +91,7 @@ class TableViewCell: UITableViewCell {
     
     /// Функция устанавливает и настраивает констрейнты.
     func setUp(){
+        
         selectionStyle = .none
         contentView.addSubview(stackView)
         
@@ -102,11 +108,13 @@ class TableViewCell: UITableViewCell {
     }
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        
        super.init(style: style, reuseIdentifier: "TableViewCell")
         setUp()
     }
     
     required init?(coder: NSCoder) {
+        
         fatalError("init(coder:) has not been implemented")
     }
 }
