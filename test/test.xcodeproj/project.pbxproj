@@ -10,7 +10,7 @@
 		F162515A26EE2C6800D2C800 /* PostsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F162515926EE2C6800D2C800 /* PostsService.swift */; };
 		F162515E26F0E81100D2C800 /* PostServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = F162515D26F0E81100D2C800 /* PostServiceProtocol.swift */; };
 		F162516026F1000200D2C800 /* LoadImageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F162515F26F1000200D2C800 /* LoadImageService.swift */; };
-		F162516226F1058700D2C800 /* LoadImageProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = F162516126F1058700D2C800 /* LoadImageProtocol.swift */; };
+		F162516226F1058700D2C800 /* ImagesServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = F162516126F1058700D2C800 /* ImagesServiceProtocol.swift */; };
 		F1641B9D26E236BF0061956E /* MyView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F1641B9C26E236BF0061956E /* MyView.xib */; };
 		F1B03E1F26E11449000DE27C /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1B03E1E26E11449000DE27C /* TableViewCell.swift */; };
 		F1C3F36526DEAE9F00437CBC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1C3F36426DEAE9F00437CBC /* AppDelegate.swift */; };
@@ -44,7 +44,7 @@
 		F162515926EE2C6800D2C800 /* PostsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsService.swift; sourceTree = "<group>"; };
 		F162515D26F0E81100D2C800 /* PostServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostServiceProtocol.swift; sourceTree = "<group>"; };
 		F162515F26F1000200D2C800 /* LoadImageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadImageService.swift; sourceTree = "<group>"; };
-		F162516126F1058700D2C800 /* LoadImageProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadImageProtocol.swift; sourceTree = "<group>"; };
+		F162516126F1058700D2C800 /* ImagesServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagesServiceProtocol.swift; sourceTree = "<group>"; };
 		F1641B9C26E236BF0061956E /* MyView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyView.xib; sourceTree = "<group>"; };
 		F1B03E1E26E11449000DE27C /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
 		F1C3F36126DEAE9F00437CBC /* test.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = test.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -115,7 +115,7 @@
 				F1C3F36626DEAE9F00437CBC /* SceneDelegate.swift */,
 				F1C3F36826DEAE9F00437CBC /* HomeViewController.swift */,
 				F162515F26F1000200D2C800 /* LoadImageService.swift */,
-				F162516126F1058700D2C800 /* LoadImageProtocol.swift */,
+				F162516126F1058700D2C800 /* ImagesServiceProtocol.swift */,
 				F1641B9C26E236BF0061956E /* MyView.xib */,
 				F1C3F36D26DEAEA200437CBC /* Assets.xcassets */,
 				F1C3F36F26DEAEA200437CBC /* LaunchScreen.storyboard */,
@@ -282,7 +282,7 @@
 				F1C3F36926DEAE9F00437CBC /* HomeViewController.swift in Sources */,
 				F162515E26F0E81100D2C800 /* PostServiceProtocol.swift in Sources */,
 				F162516026F1000200D2C800 /* LoadImageService.swift in Sources */,
-				F162516226F1058700D2C800 /* LoadImageProtocol.swift in Sources */,
+				F162516226F1058700D2C800 /* ImagesServiceProtocol.swift in Sources */,
 				F1C3F36526DEAE9F00437CBC /* AppDelegate.swift in Sources */,
 				F1C3F36726DEAE9F00437CBC /* SceneDelegate.swift in Sources */,
 			);

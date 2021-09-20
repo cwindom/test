@@ -60,6 +60,10 @@ class TableViewCell: UITableViewCell {
     
     var data: DemoData? {
         didSet {
+            guard let data = data else {
+                self.image = nil
+                return
+            }
             imageService.loadImage(data: data) { result in
                 switch result{
                 case .success(let image):
@@ -69,13 +73,10 @@ class TableViewCell: UITableViewCell {
                     print("success")
                 case .failure(let error):
                     print(error.localizedDescription)
-                
-//                    self?.nameLabel.text = self?.data?.title
-//                    self?.explanLabel.text = self?.data?.explanation
                 }
             }
-            }
         }
+    }
     
     var image: UIImage? {
         didSet {

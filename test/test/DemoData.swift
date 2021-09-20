@@ -10,12 +10,12 @@ import Foundation
 //https://app.quicktype.io/
 
 /// Эта структура хранит данные из поста.
-struct DemoData: Codable{
+struct DemoData: Codable {
     
     let date: String
     
     /// Описание поста.
-    let explanation: String
+    var explanation: String
     
     /// URL для изобрвжения.
     let hdurl: String?
@@ -24,6 +24,7 @@ struct DemoData: Codable{
     
     /// Заголовок поста.
     let title: String
+//    let newTitle: String?
     let url: String
 
     enum CodingKeys: String, CodingKey {
@@ -31,5 +32,14 @@ struct DemoData: Codable{
         case mediaType = "media_type"
         case serviceVersion = "service_version"
         case title, url
+    }
+}
+
+extension DemoData {
+    var imageUrl: URL? {
+        guard let hdurl = hdurl else {
+            return nil
+        }
+        return URL(string: hdurl)
     }
 }
