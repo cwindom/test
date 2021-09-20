@@ -9,6 +9,8 @@ import UIKit
 
 class HomeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
+    private let postPresenter = PostsPresenter(postsService: PostsService())
+    
     let requestService = PostsService()
     
     lazy var tableView: UITableView = {
@@ -35,26 +37,34 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
             tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         ])
         
-        requestService.getPostsData { [weak self] result in
-            switch result{
-            case .success(let posts):
-                self?.requestService.posts = posts
-                
-                DispatchQueue.main.async {
-                    self?.tableView.reloadData()
-                }
-                print("success")
-            case .failure(let error):
-                print(error.localizedDescription)
+        postPresenter.getPosts {
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
             }
         }
+        
+//        requestService.getPostsData { [weak self] result in
+//            switch result{
+//            case .success(let posts):
+//                self?.requestService.posts = posts
+//
+//                DispatchQueue.main.async {
+//                    self?.tableView.reloadData()
+//                }
+//                print("success")
+//            case .failure(let error):
+//                print(error.localizedDescription)
+//            }
+//        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "TableViewCell", for: indexPath) as! TableViewCell
 
-        let data = requestService.posts[indexPath.row]
+        
+        let data = postPresenter.postsService.posts[indexPath.row]
+//        let data = requestService.posts[indexPath.row]
     
         cell.data = data
         cell.nameLabel.text = data.title
@@ -67,7 +77,8 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         switch tableView {
            case self.tableView:
-              return requestService.posts.count
+            return postPresenter.postsArrayCount()
+//              return requestService.posts.count
             default:
               return 0
            }
