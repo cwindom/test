@@ -29,15 +29,16 @@ class PostsPresenter {
         self.delegate = postServiceDelegate
     }
     
-    func postsArrayCount() -> Int {
-        postsService.posts.count
-    }
+//    func postsArrayCount() -> Int {
+//        postsService.posts.count
+//    }
+    
     
     func getPosts(completion: @escaping () -> Void) {
         postsService.getPostsData { [weak self] result in
             switch result{
             case .success(let posts):
-                self?.postsService.posts = posts
+//                self?.postsService.posts = posts
 
                 completion()
 

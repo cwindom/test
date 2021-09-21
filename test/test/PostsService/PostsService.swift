@@ -9,14 +9,6 @@ import Foundation
 
 final class PostsService {
     
-    /// Этот массив нужен для хранения всех данных.
-    /// Виден и существует только в этом сервисе.
-    var postsArray = [DemoData]()
-    
-    
-    /// Этот массив хранит только нужные для view данные.
-    /// Дополнительный слой - entity.
-    var posts = [DemoDataEntity]()
 }
 
 extension PostsService: PostServiceProtocol {
@@ -66,8 +58,8 @@ extension PostsService: PostServiceProtocol {
         
             do {
                 let dataArray = try JSONDecoder().decode([DemoData].self, from: data)
-                self.posts = dataArray.map { post in DemoDataEntity(data: post) }
-                completion(.success(self.posts))
+                let posts = dataArray.map { post in DemoDataEntity(data: post) }
+                completion(.success(posts))
             } catch let error {
                 completion(.failure(error))
             }

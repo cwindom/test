@@ -7,11 +7,13 @@
 
 import UIKit
 
-class HomeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+final class HomeViewController: UIViewController {
     
-    private let postPresenter = PostsPresenter(postsService: PostsService())
+    var posts = [DemoDataEntity]()
     
-    let requestService = PostsService()
+//    private let postPresenter = PostsPresenter(postsService: PostsService())
+    
+    let requestService: PostServiceProtocol = PostsService()
     
     lazy var tableView: UITableView = {
         
@@ -27,6 +29,8 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         super.viewDidLoad()
         
+        title = "Super"
+        
         navigationController?.navigationBar.prefersLargeTitles = true
         view.addSubview(self.tableView)
         
@@ -37,34 +41,57 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
             tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         ])
         
-        postPresenter.getPosts {
-            DispatchQueue.main.async {
-                self.tableView.reloadData()
+        requestService.getPostsData { [weak self] result in
+            switch result{
+            case .success(let posts):
+                self?.posts = posts
+
+                DispatchQueue.main.async {
+                    self?.tableView.reloadData()
+                }
+                print("success")
+            case .failure(let error):
+                print(error.localizedDescription)
             }
         }
-        
-//        requestService.getPostsData { [weak self] result in
-//            switch result{
-//            case .success(let posts):
-//                self?.requestService.posts = posts
-//
-//                DispatchQueue.main.async {
-//                    self?.tableView.reloadData()
-//                }
-//                print("success")
-//            case .failure(let error):
-//                print(error.localizedDescription)
-//            }
-//        }
     }
+}
+
+extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
+
+    //это в роутер в вмс - относится к контроллеру
+    //а из роутера одна функция типа postDetailController которая принимает dataEntity
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        let viewController = UIViewController()
+        viewController.view.backgroundColor = .blue
+        viewController.title = "yep"
+//        show(viewController, sender: nil)
+        
+        let navigationController = UINavigationController(rootViewController: viewController)
+        present(navigationController, animated: true) {
+        
+            print("hey")
+        }
+        
+        
+        //!!!!
+        //разобраться
+//        navigationController
+//        navigationItem. свойство контроллера
+//        navigationController.navigationBar
+        //конец
+        
+//        navigationController?.pushViewController(viewController, animated: false)
+
+    }
+    
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "TableViewCell", for: indexPath) as! TableViewCell
 
-        
-        let data = postPresenter.postsService.posts[indexPath.row]
-//        let data = requestService.posts[indexPath.row]
+        let data = posts[indexPath.row]
     
         cell.data = data
         cell.nameLabel.text = data.title
@@ -75,13 +102,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        switch tableView {
-           case self.tableView:
-            return postPresenter.postsArrayCount()
-//              return requestService.posts.count
-            default:
-              return 0
-           }
+        return posts.count
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -94,4 +115,3 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         return 300
     }
 }
-
