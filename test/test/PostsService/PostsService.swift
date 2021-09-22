@@ -13,7 +13,6 @@ final class PostsService {
     /// Виден и существует только в этом сервисе.
     var postsArray = [DemoData]()
     
-    
     /// Этот массив хранит только нужные для view данные.
     /// Дополнительный слой - entity.
     var posts = [DemoDataEntity]()

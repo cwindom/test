@@ -7,7 +7,7 @@
 
 import UIKit
 
-class HomeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class View: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     let requestService = PostsService()
     
