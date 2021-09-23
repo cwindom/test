@@ -38,3 +38,41 @@ import Foundation
 //        }
 //    }
 //}
+
+
+
+//это в роутер в вмс - относится к контроллеру
+//а из роутера одна функция типа postDetailController которая принимает dataEntity
+//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+//
+//        let viewController = UIViewController()
+//        viewController.view.backgroundColor = .blue
+//        viewController.title = "yep"
+////        show(viewController, sender: nil)
+//
+//        let navigationController = UINavigationController(rootViewController: viewController)
+//        present(navigationController, animated: true) {
+//
+//            print("hey")
+//        }
+    
+    
+    //!!!!
+    //разобраться
+//        navigationController
+//        navigationItem. свойство контроллера
+//        navigationController.navigationBar
+    //конец
+    
+//        navigationController?.pushViewController(viewController, animated: false)
+
+
+
+
+//перезагружать видимые ячейки
+//!починить картинки!
+//мвп привести в порядок: документация
+//
+
+
+

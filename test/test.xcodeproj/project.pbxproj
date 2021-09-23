@@ -11,12 +11,15 @@
 		F162515E26F0E81100D2C800 /* PostServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = F162515D26F0E81100D2C800 /* PostServiceProtocol.swift */; };
 		F162516026F1000200D2C800 /* ImageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F162515F26F1000200D2C800 /* ImageService.swift */; };
 		F162516226F1058700D2C800 /* ImagesServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = F162516126F1058700D2C800 /* ImagesServiceProtocol.swift */; };
-		F1641B9D26E236BF0061956E /* MyView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F1641B9C26E236BF0061956E /* MyView.xib */; };
-		F19C78AE26F92B3F00692E7E /* PostsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F19C78AD26F92B3F00692E7E /* PostsPresenter.swift */; };
+		F19C78AE26F92B3F00692E7E /* Presenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F19C78AD26F92B3F00692E7E /* Presenter.swift */; };
+		F19C7A4826FBBAA200692E7E /* ViewOutputProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = F19C7A4726FBBAA200692E7E /* ViewOutputProtocol.swift */; };
+		F19C7A4A26FBBAB000692E7E /* ViewInputProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = F19C7A4926FBBAB000692E7E /* ViewInputProtocol.swift */; };
+		F19C7A4C26FBBBF100692E7E /* AppRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F19C7A4B26FBBBF100692E7E /* AppRouter.swift */; };
+		F19C7A5026FC815200692E7E /* RouterInputProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = F19C7A4F26FC815200692E7E /* RouterInputProtocol.swift */; };
 		F1B03E1F26E11449000DE27C /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1B03E1E26E11449000DE27C /* TableViewCell.swift */; };
 		F1C3F36526DEAE9F00437CBC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1C3F36426DEAE9F00437CBC /* AppDelegate.swift */; };
 		F1C3F36726DEAE9F00437CBC /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1C3F36626DEAE9F00437CBC /* SceneDelegate.swift */; };
-		F1C3F36926DEAE9F00437CBC /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1C3F36826DEAE9F00437CBC /* HomeViewController.swift */; };
+		F1C3F36926DEAE9F00437CBC /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1C3F36826DEAE9F00437CBC /* View.swift */; };
 		F1C3F36E26DEAEA200437CBC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F1C3F36D26DEAEA200437CBC /* Assets.xcassets */; };
 		F1C3F37126DEAEA200437CBC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F1C3F36F26DEAEA200437CBC /* LaunchScreen.storyboard */; };
 		F1C3F37C26DEAEA200437CBC /* testTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1C3F37B26DEAEA200437CBC /* testTests.swift */; };
@@ -46,14 +49,17 @@
 		F162515D26F0E81100D2C800 /* PostServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostServiceProtocol.swift; sourceTree = "<group>"; };
 		F162515F26F1000200D2C800 /* ImageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageService.swift; sourceTree = "<group>"; };
 		F162516126F1058700D2C800 /* ImagesServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagesServiceProtocol.swift; sourceTree = "<group>"; };
-		F1641B9C26E236BF0061956E /* MyView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyView.xib; sourceTree = "<group>"; };
 		F19C78AB26F920F400692E7E /* Notes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notes.swift; sourceTree = "<group>"; };
-		F19C78AD26F92B3F00692E7E /* PostsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsPresenter.swift; sourceTree = "<group>"; };
+		F19C78AD26F92B3F00692E7E /* Presenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Presenter.swift; sourceTree = "<group>"; };
+		F19C7A4726FBBAA200692E7E /* ViewOutputProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewOutputProtocol.swift; sourceTree = "<group>"; };
+		F19C7A4926FBBAB000692E7E /* ViewInputProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewInputProtocol.swift; sourceTree = "<group>"; };
+		F19C7A4B26FBBBF100692E7E /* AppRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppRouter.swift; sourceTree = "<group>"; };
+		F19C7A4F26FC815200692E7E /* RouterInputProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouterInputProtocol.swift; sourceTree = "<group>"; };
 		F1B03E1E26E11449000DE27C /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
 		F1C3F36126DEAE9F00437CBC /* test.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = test.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F1C3F36426DEAE9F00437CBC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F1C3F36626DEAE9F00437CBC /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		F1C3F36826DEAE9F00437CBC /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		F1C3F36826DEAE9F00437CBC /* View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
 		F1C3F36D26DEAEA200437CBC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F1C3F37026DEAEA200437CBC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F1C3F37226DEAEA200437CBC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -120,8 +126,10 @@
 		F19C78AA26F8BBDE00692E7E /* View */ = {
 			isa = PBXGroup;
 			children = (
-				F1C3F36826DEAE9F00437CBC /* HomeViewController.swift */,
+				F1C3F36826DEAE9F00437CBC /* View.swift */,
 				F1B03E1E26E11449000DE27C /* TableViewCell.swift */,
+				F19C7A4726FBBAA200692E7E /* ViewOutputProtocol.swift */,
+				F19C7A4926FBBAB000692E7E /* ViewInputProtocol.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -129,9 +137,27 @@
 		F19C78AC26F92AFD00692E7E /* Presenter */ = {
 			isa = PBXGroup;
 			children = (
-				F19C78AD26F92B3F00692E7E /* PostsPresenter.swift */,
+				F19C78AD26F92B3F00692E7E /* Presenter.swift */,
 			);
 			path = Presenter;
+			sourceTree = "<group>";
+		};
+		F19C7A4D26FC5CA000692E7E /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				F19C78A826F8BBB000692E7E /* PostsService */,
+				F19C78A726F8BB4900692E7E /* ImageService */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		F19C7A4E26FC813600692E7E /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				F19C7A4B26FBBBF100692E7E /* AppRouter.swift */,
+				F19C7A4F26FC815200692E7E /* RouterInputProtocol.swift */,
+			);
+			path = Router;
 			sourceTree = "<group>";
 		};
 		F1C3F35826DEAE9F00437CBC = {
@@ -157,14 +183,13 @@
 		F1C3F36326DEAE9F00437CBC /* test */ = {
 			isa = PBXGroup;
 			children = (
+				F19C7A4E26FC813600692E7E /* Router */,
+				F19C7A4D26FC5CA000692E7E /* Services */,
 				F19C78AC26F92AFD00692E7E /* Presenter */,
 				F19C78AA26F8BBDE00692E7E /* View */,
 				F19C78A926F8BBCD00692E7E /* Models */,
-				F19C78A826F8BBB000692E7E /* PostsService */,
-				F19C78A726F8BB4900692E7E /* ImageService */,
 				F1C3F36426DEAE9F00437CBC /* AppDelegate.swift */,
 				F1C3F36626DEAE9F00437CBC /* SceneDelegate.swift */,
-				F1641B9C26E236BF0061956E /* MyView.xib */,
 				F1C3F36D26DEAEA200437CBC /* Assets.xcassets */,
 				F1C3F36F26DEAEA200437CBC /* LaunchScreen.storyboard */,
 				F1C3F37226DEAEA200437CBC /* Info.plist */,
@@ -296,7 +321,6 @@
 			files = (
 				F1C3F37126DEAEA200437CBC /* LaunchScreen.storyboard in Resources */,
 				F1C3F36E26DEAEA200437CBC /* Assets.xcassets in Resources */,
-				F1641B9D26E236BF0061956E /* MyView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -323,14 +347,18 @@
 			files = (
 				F1B03E1F26E11449000DE27C /* TableViewCell.swift in Sources */,
 				F162515A26EE2C6800D2C800 /* PostsService.swift in Sources */,
+				F19C7A4826FBBAA200692E7E /* ViewOutputProtocol.swift in Sources */,
 				F1C3F39726DEC1B500437CBC /* DemoData.swift in Sources */,
-				F1C3F36926DEAE9F00437CBC /* HomeViewController.swift in Sources */,
+				F1C3F36926DEAE9F00437CBC /* View.swift in Sources */,
 				F162515E26F0E81100D2C800 /* PostServiceProtocol.swift in Sources */,
 				F162516026F1000200D2C800 /* ImageService.swift in Sources */,
+				F19C7A4A26FBBAB000692E7E /* ViewInputProtocol.swift in Sources */,
 				F162516226F1058700D2C800 /* ImagesServiceProtocol.swift in Sources */,
 				F1C3F36526DEAE9F00437CBC /* AppDelegate.swift in Sources */,
-				F19C78AE26F92B3F00692E7E /* PostsPresenter.swift in Sources */,
+				F19C7A4C26FBBBF100692E7E /* AppRouter.swift in Sources */,
+				F19C78AE26F92B3F00692E7E /* Presenter.swift in Sources */,
 				F1C3F36726DEAE9F00437CBC /* SceneDelegate.swift in Sources */,
+				F19C7A5026FC815200692E7E /* RouterInputProtocol.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

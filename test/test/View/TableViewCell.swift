@@ -61,13 +61,15 @@ class TableViewCell: UITableViewCell {
         return stackView
     }()
     
-    var data: DemoDataEntity? {
+    var url: URL? {
         
         didSet {
-            guard let data = data, let url = data.imageUrl else {
-                self.image = nil
+            
+            guard let url = url else {
+                image = nil
                 return
             }
+            
             imageService.loadImage(url: url) { result in
                 switch result{
                 case .success(let image):
