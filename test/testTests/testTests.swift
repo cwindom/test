@@ -9,25 +9,31 @@ import XCTest
 @testable import test
 
 class testTests: XCTestCase {
+    
+    var instanse: PostsService!
+    
+    func testApplyingCoupon() {
+        // Given
+        var product = Product(name: "Book", price: 25)
+        let requestService = PostsService()
+
+        // When
+        product.apply(coupon)
+
+        // Then
+        XCTAssertEqual(product.price, 20)
+    }
 
     override func setUpWithError() throws {
         // Put setup code here. This method is called before the invocation of each test method in the class.
+        try super.setUpWithError()
+        instanse = PostsService()
     }
 
     override func tearDownWithError() throws {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
-    }
-
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-    }
-
-    func testPerformanceExample() throws {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
+        instanse = nil
+        try super.tearDownWithError()
     }
 
 }

@@ -72,4 +72,9 @@ extension PostsService: PostServiceProtocol {
             }
         }.resume()
     }
+    
+    func getCountPost() -> Int {
+        
+        posts.count
+    }
 }

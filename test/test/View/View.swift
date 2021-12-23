@@ -7,9 +7,9 @@
 
 import UIKit
 
-class View: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class View: UIViewController, UITableViewDelegate, UITableViewDataSource, ViewInputProtocol {
     
-    let requestService = PostsService()
+    var presenter: ViewOutputProtocol?
     
     lazy var tableView: UITableView = {
         
@@ -21,12 +21,7 @@ class View: UIViewController, UITableViewDelegate, UITableViewDataSource {
         return table
     }()
     
-    override func viewDidLoad() {
-        
-        super.viewDidLoad()
-        
-        navigationController?.navigationBar.prefersLargeTitles = true
-        view.addSubview(self.tableView)
+    func setupConstraints() {
         
         NSLayoutConstraint.activate([
             tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
@@ -34,43 +29,42 @@ class View: UIViewController, UITableViewDelegate, UITableViewDataSource {
             tableView.topAnchor.constraint(equalTo: view.topAnchor),
             tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         ])
+    }
+    
+    func setupView() {
         
-        requestService.getPostsData { [weak self] result in
-            switch result{
-            case .success(let posts):
-                self?.requestService.posts = posts
-                
-                DispatchQueue.main.async {
-                    self?.tableView.reloadData()
-                }
-                print("success")
-            case .failure(let error):
-                print(error.localizedDescription)
-            }
-        }
+        navigationController?.navigationBar.prefersLargeTitles = true
+        view.addSubview(self.tableView)
+        setupConstraints()
+        
+        self.presenter = Presenter(view: self)
+    }
+    
+    override func viewDidLoad() {
+        
+        super.viewDidLoad()
+        setupView()
+        presenter?.viewDidLoad()
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "TableViewCell", for: indexPath) as! TableViewCell
 
-        let data = requestService.posts[indexPath.row]
+        guard let data = presenter?.getPostsData() else { return cell }
     
-        cell.data = data
-        cell.nameLabel.text = data.title
-        cell.explanLabel.text = data.explanation
+        cell.data = data[indexPath.row]
+        cell.nameLabel.text = data[indexPath.row].title
+        cell.explanLabel.text = data[indexPath.row].explanation
 
         return cell
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        switch tableView {
-           case self.tableView:
-              return requestService.posts.count
-            default:
-              return 0
-           }
+        guard let data = presenter?.getPostsData() else { return 0 }
+        
+        return data.count
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -82,5 +76,9 @@ class View: UIViewController, UITableViewDelegate, UITableViewDataSource {
         
         return 300
     }
+    
+    func reloadTableViewData() {
+        
+        tableView.reloadData()
+    }
 }
-
