@@ -10,29 +10,68 @@ import XCTest
 
 class testTests: XCTestCase {
     
-    var instanse: PostsService!
+    var sut: URLSession!
     
-    func testApplyingCoupon() {
-        // Given
-        var product = Product(name: "Book", price: 25)
-        let requestService = PostsService()
-
-        // When
-        product.apply(coupon)
-
-        // Then
-        XCTAssertEqual(product.price, 20)
+    func testgetPostsData() {
+        
+        // given
+        let url = URL(string: "https://api.nasa.gov/planetary/apod?api_key=3LomLzdjD0yDLoWaZq80ptocSS1VBHrhFb6jE261&count=6")!
+        let promise = expectation(description: "Status code: 200")
+        
+        // when
+        sut.dataTask(with: url) { _, response, error in
+            
+        // then
+            if let error = error {
+                
+                XCTFail("Error: \(error.localizedDescription)")
+                return
+            } else if let statusCode = (response as? HTTPURLResponse)?.statusCode {
+                
+                if statusCode == 200 {
+                    
+                    promise.fulfill()
+                } else {
+                    
+                    XCTFail("Status code: \(statusCode)")
+                }
+            }
+        }.resume()
+        wait(for: [promise], timeout: 5)
+    }
+    
+    func testApiCallCompletes() throws {
+        
+        // given
+        let url = URL(string: "https://api.nasa.gov/planetary/apod?api_key=3LomLzdjD0yDLoWaZq80ptocSS1VBHrhFb6jE261&count=6")!
+        let promise = expectation(description: "Completion handler invoked")
+        var statusCode: Int?
+        var responseError: Error?
+        
+        // when
+        sut.dataTask(with: url) { _, response, error in
+            statusCode = (response as? HTTPURLResponse)?.statusCode
+            responseError = error
+            promise.fulfill()
+        }.resume()
+        wait(for: [promise], timeout: 5)
+        
+        // then
+        XCTAssertNil(responseError)
+        XCTAssertEqual(statusCode, 200)
     }
 
     override func setUpWithError() throws {
+        
         // Put setup code here. This method is called before the invocation of each test method in the class.
         try super.setUpWithError()
-        instanse = PostsService()
+        sut = URLSession(configuration: .default)
     }
 
     override func tearDownWithError() throws {
+        
         // Put teardown code here. This method is called after the invocation of each test method in the class.
-        instanse = nil
+        sut = nil
         try super.tearDownWithError()
     }
 

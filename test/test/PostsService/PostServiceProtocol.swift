@@ -8,6 +8,7 @@
 import Foundation
 
 /// Это сервис для работы с постами.
+//sourcery: AutoMockable
 protocol PostServiceProtocol {
     
     /// Получить массив постов.

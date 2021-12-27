@@ -23,6 +23,7 @@ import UIKit
 //}
 
 /// Это сервис для работы с изображениями.
+//sourcery: AutoMockable
 protocol ImagesServiceProtocol {
     
     /// Загрузить изображение.

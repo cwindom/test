@@ -10,7 +10,7 @@ import Foundation
 protocol ViewOutputProtocol {
     
     func viewDidLoad()
-    func getPostsData() -> [DemoDataEntity]
+    func getPosts() -> [DemoDataEntity]
 }
 
 protocol ViewInputProtocol: AnyObject {

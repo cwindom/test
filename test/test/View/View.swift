@@ -7,17 +7,19 @@
 
 import UIKit
 
-class View: UIViewController, UITableViewDelegate, UITableViewDataSource, ViewInputProtocol {
+class View: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     var presenter: ViewOutputProtocol?
     
     lazy var tableView: UITableView = {
         
         let table = UITableView()
+        
         table.translatesAutoresizingMaskIntoConstraints = false
         table.register(TableViewCell.self, forCellReuseIdentifier: "TableViewCell")
         table.delegate = self
         table.dataSource = self
+        
         return table
     }()
     
@@ -36,14 +38,15 @@ class View: UIViewController, UITableViewDelegate, UITableViewDataSource, ViewIn
         navigationController?.navigationBar.prefersLargeTitles = true
         view.addSubview(self.tableView)
         setupConstraints()
-        
-        self.presenter = Presenter(view: self)
     }
     
     override func viewDidLoad() {
         
         super.viewDidLoad()
+        
         setupView()
+        
+        self.presenter = Presenter(view: self)
         presenter?.viewDidLoad()
     }
     
@@ -51,7 +54,7 @@ class View: UIViewController, UITableViewDelegate, UITableViewDataSource, ViewIn
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "TableViewCell", for: indexPath) as! TableViewCell
 
-        guard let data = presenter?.getPostsData() else { return cell }
+        guard let data = presenter?.getPosts() else { return cell }
     
         cell.data = data[indexPath.row]
         cell.nameLabel.text = data[indexPath.row].title
@@ -62,7 +65,7 @@ class View: UIViewController, UITableViewDelegate, UITableViewDataSource, ViewIn
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        guard let data = presenter?.getPostsData() else { return 0 }
+        guard let data = presenter?.getPosts() else { return 0 }
         
         return data.count
     }
@@ -76,6 +79,9 @@ class View: UIViewController, UITableViewDelegate, UITableViewDataSource, ViewIn
         
         return 300
     }
+}
+
+extension View: ViewInputProtocol {
     
     func reloadTableViewData() {
         

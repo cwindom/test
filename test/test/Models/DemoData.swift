@@ -45,7 +45,7 @@ extension DemoData {
     }
 }
 
-struct DemoDataEntity {
+struct DemoDataEntity: Equatable {
     
     let date: String
     let title: String

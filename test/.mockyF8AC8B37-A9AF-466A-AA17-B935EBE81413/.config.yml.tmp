@@ -1,0 +1,12 @@
+sources:
+  include:
+  - ../test
+templates:
+- /Users/out-korogodova-mm/Desktop/testtoDo/test/.mockyF8AC8B37-A9AF-466A-AA17-B935EBE81413/.template.swifttemplate
+output: /Users/out-korogodova-mm/Desktop/testtoDo/test/.mockyF8AC8B37-A9AF-466A-AA17-B935EBE81413/types.yaml
+args:
+  swiftyMocky:
+    import:
+    - Foundation
+    testable:
+    - test

@@ -39,7 +39,7 @@ final class Presenter: ViewOutputProtocol {
         loadPosts()
     }
     
-    func getPostsData() -> [DemoDataEntity] {
+    func getPosts() -> [DemoDataEntity] {
         
         requestService.posts
     }

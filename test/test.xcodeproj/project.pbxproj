@@ -23,6 +23,11 @@
 		F1C3F39726DEC1B500437CBC /* DemoData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1C3F39626DEC1B500437CBC /* DemoData.swift */; };
 		F1ED41212773508E00433636 /* Presenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1ED41202773508E00433636 /* Presenter.swift */; };
 		F1ED41232773659A00433636 /* ViewProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1ED41222773659700433636 /* ViewProtocols.swift */; };
+		F1ED41272775147600433636 /* PostServiceTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1ED41262775147600433636 /* PostServiceTest.swift */; };
+		F1ED4129277517CA00433636 /* PresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1ED4128277517CA00433636 /* PresenterTests.swift */; };
+		F1ED412D2775BD0A00433636 /* AutoMockable.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1ED412C2775BD0A00433636 /* AutoMockable.swift */; };
+		F1ED41312778C80100433636 /* TestDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1ED41302778C80100433636 /* TestDoubles.swift */; };
+		F1ED41352778E9B600433636 /* ImageServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1ED41342778E9B600433636 /* ImageServiceTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,6 +70,11 @@
 		F1C3F39626DEC1B500437CBC /* DemoData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoData.swift; sourceTree = "<group>"; };
 		F1ED41202773508E00433636 /* Presenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Presenter.swift; sourceTree = "<group>"; };
 		F1ED41222773659700433636 /* ViewProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewProtocols.swift; sourceTree = "<group>"; };
+		F1ED41262775147600433636 /* PostServiceTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostServiceTest.swift; sourceTree = "<group>"; };
+		F1ED4128277517CA00433636 /* PresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresenterTests.swift; sourceTree = "<group>"; };
+		F1ED412C2775BD0A00433636 /* AutoMockable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoMockable.swift; sourceTree = "<group>"; };
+		F1ED41302778C80100433636 /* TestDoubles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestDoubles.swift; sourceTree = "<group>"; };
+		F1ED41342778E9B600433636 /* ImageServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageServiceTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -162,6 +172,7 @@
 				F1C3F36F26DEAEA200437CBC /* LaunchScreen.storyboard */,
 				F1C3F37226DEAEA200437CBC /* Info.plist */,
 				F1ED41202773508E00433636 /* Presenter.swift */,
+				F1ED412C2775BD0A00433636 /* AutoMockable.swift */,
 			);
 			path = test;
 			sourceTree = "<group>";
@@ -169,8 +180,12 @@
 		F1C3F37A26DEAEA200437CBC /* testTests */ = {
 			isa = PBXGroup;
 			children = (
+				F1ED41342778E9B600433636 /* ImageServiceTests.swift */,
+				F1ED4128277517CA00433636 /* PresenterTests.swift */,
+				F1ED41262775147600433636 /* PostServiceTest.swift */,
 				F1C3F37B26DEAEA200437CBC /* testTests.swift */,
 				F1C3F37D26DEAEA200437CBC /* Info.plist */,
+				F1ED41302778C80100433636 /* TestDoubles.swift */,
 			);
 			path = testTests;
 			sourceTree = "<group>";
@@ -318,6 +333,7 @@
 				F162515A26EE2C6800D2C800 /* PostsService.swift in Sources */,
 				F1ED41232773659A00433636 /* ViewProtocols.swift in Sources */,
 				F1C3F39726DEC1B500437CBC /* DemoData.swift in Sources */,
+				F1ED412D2775BD0A00433636 /* AutoMockable.swift in Sources */,
 				F1C3F36926DEAE9F00437CBC /* View.swift in Sources */,
 				F162515E26F0E81100D2C800 /* PostServiceProtocol.swift in Sources */,
 				F1ED41212773508E00433636 /* Presenter.swift in Sources */,
@@ -333,6 +349,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				F1C3F37C26DEAEA200437CBC /* testTests.swift in Sources */,
+				F1ED41272775147600433636 /* PostServiceTest.swift in Sources */,
+				F1ED41312778C80100433636 /* TestDoubles.swift in Sources */,
+				F1ED41352778E9B600433636 /* ImageServiceTests.swift in Sources */,
+				F1ED4129277517CA00433636 /* PresenterTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
