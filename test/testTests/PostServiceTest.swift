@@ -8,39 +8,59 @@
 import XCTest
 @testable import test
 
-class PostServiceTest: XCTestCase {
+class PostServiceTests: XCTestCase {
     
-    var sut: PostsService!
+    var sut: PostServiceProtocol!
     
-    func testGetPostsData() throws {
+    // все параметры корректны
+    func test_load_post_success() throws {
         
         // given
+        let asyncExpectation = expectation(description: "addChildIsWorkingFunction")
         
         // when
-        
         sut.getPostsData { result in
+            asyncExpectation.fulfill()
+            
+            // then
             switch result {
-                
-                // then
-            case .success(_):
-                XCTAssertTrue(true)
+            case .success(let posts):
+                XCTAssertNotNil(posts)
             case .failure(let error):
                 XCTFail("Error: \(error.localizedDescription)")
             }
         }
-        
+        waitForExpectations(timeout: 5, handler: nil)
     }
     
-    override func setUpWithError() throws {
+    func test_load_post_fail() throws {
         
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+        // given
+        let asyncExpectation = expectation(description: "addChildIsWorkingFunction")
+        
+        // when
+        sut.getPostsData { result in
+            asyncExpectation.fulfill()
+
+            // then
+            switch result {
+            case .success(let posts):
+                XCTAssertFalse(posts.isEmpty)
+                print("success")
+            case .failure(let error):
+                XCTFail("Error: \(error.localizedDescription)")
+            }
+        }
+        waitForExpectations(timeout: 5, handler: nil)
+        
+    }
+
+    override func setUpWithError() throws {
         try super.setUpWithError()
         sut = PostsService()
     }
 
     override func tearDownWithError() throws {
-        
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
         sut = nil
         try super.tearDownWithError()
     }

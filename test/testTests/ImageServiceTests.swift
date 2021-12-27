@@ -10,27 +10,48 @@ import XCTest
 
 class ImageServiceTests: XCTestCase {
     
-    var sut: ImageService!
+    var sut: ImagesServiceProtocol!
     
-    func test_load_image_when_url_is_correct() throws {
+    // все параметры корректны
+    func test_load_image_success() throws {
         
         // given
-        let url = URL(string: "fdg")!
+        let url = URL(string: "https://www.nasa.gov/sites/default/files/thumbnails/image/1-cowvr-loaded-1041.jpg")!
         
         // when
         
         sut.loadImage(url: url) { result in
-            switch result{
+            
+            // then
+            switch result {
             case .success(let image):
-                DispatchQueue.main.async() { [weak self] in
-                    
-                }
-                print("success")
+                XCTAssertNotNil(image.cgImage)
             case .failure(let error):
-                // then
                 XCTFail("Error: \(error.localizedDescription)")
             }
         }
+        
+    }
+    
+    func test_load_image_fail() throws {
+        
+        // given
+        let url = URL(string: "https://www.nasasites/default/files/thumbnails/image/1-cowvr-loaded-1")!
+        let asyncExpectation = expectation(description: "addChildIsWorkingFunction")
+        
+        // when
+        sut.loadImage(url: url) { result in
+            asyncExpectation.fulfill()
+            
+            // then
+            switch result {
+            case .success(let image):
+                XCTAssertNotNil(image.cgImage)
+            case .failure(let error):
+                XCTAssertNotNil(error)
+            }
+        }
+        waitForExpectations(timeout: 5, handler: nil)
         
     }
 
